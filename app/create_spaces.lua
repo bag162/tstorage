@@ -32,13 +32,6 @@ function spaces.initUsersDB()	--in-memory
         unique = true,
         parts = {4, 'STRING'}
     })
-
-    users_space:create_index('bucket_id', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = true,
-        parts = {5, 'unsigned'}
-    })
 end
 
 function spaces.initOrdersDB()	--in-memory
@@ -108,13 +101,6 @@ function spaces.initOrdersDB()	--in-memory
         unique = false,
         parts = {9, 'STRING'}
     })
-
-    orders_space:create_index('bucket_id', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = true,
-        parts = {10, 'unsigned'}
-    })
 end
 
 function spaces.initHistoryDB()	--disk
@@ -149,13 +135,6 @@ function spaces.initHistoryDB()	--disk
         type = 'TREE',
         unique = false,
         parts = {4, 'string'}
-    })
-	
-	history_space:create_index('bucket_id', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = true,
-        parts = {5, 'unsigned'}
     })
 end
 
