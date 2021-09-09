@@ -17,3 +17,5 @@ RUN apt install gcc
 RUN tarantoolctl rocks install vshard
 
 CMD tarantool app/storage.lua 8a274925-a26d-47fc-9e1b-af88ce939412
+
+# test
