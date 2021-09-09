@@ -25,7 +25,3 @@ box.once('initHistoryDB', spaces.initHistoryDB)
 box.once('initServicesDB', spaces.initServicesDB)
 box.once('initAccountsDB', spaces.initAccountsDB)
 box.once('initProxyDB', spaces.initProxyDB)
-
-function Test()
-    return "success";
-end
