@@ -30,7 +30,11 @@ box.once('initQueue', spaces.InitQueue)
 function GetOrderTask()
     local space = box.space.queue;
 
-    local task = space.index.secondary_lastcheck:random(1)
-    box.space.queue:delete(task[1])
+    local task = space.index:random(1)
+    
+    if task ~= nil then
+        box.space.queue:delete(task[1])
+    end
+
     return task
 end
