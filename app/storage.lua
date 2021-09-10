@@ -40,3 +40,12 @@ function GetOrderTask()
 
     return nil
 end
+
+function CheckTuple(string)
+    return box.tuple.is(string)
+end
+
+function AddQueue2(s1, s2, s3, s4, s5)
+    local tuple = box.tuple.new{s1, s2, s3, s4}
+    return tuple
+end
