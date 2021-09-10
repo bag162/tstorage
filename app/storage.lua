@@ -30,9 +30,9 @@ box.once('initQueue', spaces.InitQueue)
 function GetOrderTask()
     local space = box.space.queue;
 
-    local tasks = space:select({0},{iterator='GT',offset=1,limit=1})
+    local tasks = space:select({"0"},{iterator='GT',offset=1,limit=1})
     local task = tasks[1]
-    
+
     if task ~= nil then
         box.space.queue:delete(task[1])
         return task
