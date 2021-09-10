@@ -25,3 +25,12 @@ box.once('initHistoryDB', spaces.initHistoryDB)
 box.once('initServicesDB', spaces.initServicesDB)
 box.once('initAccountsDB', spaces.initAccountsDB)
 box.once('initProxyDB', spaces.initProxyDB)
+box.once('initQueue', spaces.InitQueue)
+
+function GetOrderTask()
+    local space = box.space.queue;
+
+    local task = space.index.secondary_lastcheck:random(1)
+    box.space.queue:delete(task[1])
+    return task
+end

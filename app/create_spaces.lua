@@ -303,4 +303,46 @@ function spaces.initProxyDB()	--in-memory
     })
 end
 
+function spaces.InitQueue()	--imemory
+	local queue_space = box.schema.space.create('queue', {
+        if_not_exists = true
+    })
+	
+	queue_space:create_index('primary_index', {
+        if_not_exists = true,
+        type = 'TREE',
+        unique = true,
+        parts = {1, 'string'}
+    })
+	
+	queue_space:create_index('secondary_type', {
+        if_not_exists = true,
+        type = 'TREE',
+        unique = false,
+        parts = {2, 'INT'}
+    })
+	
+	queue_space:create_index('secondary_data', {
+        if_not_exists = true,
+        type = 'TREE',
+        unique = false,
+        parts = {3, 'string'}
+    })
+
+    queue_space:create_index('secondary_priority', {
+        if_not_exists = true,
+        type = 'TREE',
+        unique = false,
+        parts = {4, 'INT'}
+    })
+
+	queue_space:create_index('bucket_id', {
+        if_not_exists = true,
+        type = 'TREE',
+        unique = true,
+        parts = {5, 'unsigned'}
+    })
+
+end
+
 return spaces;
