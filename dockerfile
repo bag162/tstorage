@@ -9,7 +9,10 @@ RUN apt-get -y install curl
 RUN curl -L https://tarantool.io/tmiDJVT/release/2.8/installer.sh | bash
 RUN DEBIAN_FRONTEND=noninteractive apt-get install tarantool -y
 
-RUN apt install git, cmake, make, gcc
+RUN apt install git
+RUN apt install cmake
+RUN apt install make
+RUN apt install gcc
 
 RUN tarantoolctl rocks install vshard
 
