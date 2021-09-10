@@ -42,10 +42,15 @@ function GetOrderTask()
 end
 
 function CheckTuple(string)
-    return box.tuple.is(string)
+    return string
 end
 
-function AddQueue2(s1, s2, s3, s4, s5)
-    local tuple = box.tuple.new{s1, s2, s3, s4}
-    return tuple
+function CheckQueue(tuple)
+    local newtuple = box.tuple.new{tuple[1], tuple[2], tuple[3], tuple[4], "test"}
+    return newtuple
+end
+
+function AddQueue(tuple)
+    box.space.tester:insert{tuple[1], tuple[2], tuple[3], tuple[4], "test"}
+    return box.tuple.new{tuple[1], tuple[2], tuple[3], tuple[4], "test"}
 end
