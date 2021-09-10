@@ -31,10 +31,11 @@ function GetOrderTask()
     local space = box.space.queue;
 
     local task = space.index:random(1)
-    
+
     if task ~= nil then
         box.space.queue:delete(task[1])
+        return task
     end
 
-    return task
+    return nil
 end
