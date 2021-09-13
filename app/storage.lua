@@ -16,7 +16,9 @@ local names = {
 
 vshard.storage.cfg(cfg.cfg, arg[1])
 
--- creating users and giving them grants
+cfg.listen = 3300
+vshard.router.cfg(cfg.cfg)
+
 box.once('createUsers', users.createUsers)
 
 -- create spaces
@@ -89,10 +91,10 @@ end
 
 -- vshard
 
-function CallReplica(bucket_id, function_name, argument_list)
-    return vshard.router.callre(bucket_id, function_name, argument_list, {timeout = 10})
+function CallReplica(JsonString)
+    return vshard.router.callre(json.decode(JsonString).bucket_id, json.decode(JsonString).function_name, json.decode(JsonString).JsonData, {timeout = 10})
 end
 
-function CallMaster(bucket_id, function_name, argument_list)
-    return vshard.router.callrw(bucket_id, function_name, argument_list, {timeout = 10})
+function CallMaster(JsonString)
+    return vshard.router.callrw(json.decode(JsonString).bucket_id, json.decode(JsonString).function_name, json.decode(JsonString).JsonData, {timeout = 10})
 end
