@@ -4,6 +4,7 @@ local spaces = require('create_spaces')
 local users = require("create_users")
 local vshard = require('vshard')
 local cfg = require("cfg")
+local json = require('json')
 
 local names = {
     ['storage_1_master'] = '8a274925-a26d-47fc-9e1b-af88ce939412',
@@ -27,30 +28,71 @@ box.once('initAccountsDB', spaces.initAccountsDB)
 box.once('initProxyDB', spaces.initProxyDB)
 box.once('initQueue', spaces.InitQueue)
 
-function GetOrderTask()
-    local space = box.space.queue;
+-- CRUD
 
-    local tasks = space:select({"0"},{iterator='GT',offset=1,limit=1})
-    local task = tasks[1]
+function GetAll(JsonString)
+    local space_name = json.decode(JsonString).space_name
+    return box.space[space_name]:select()
+end
 
-    if task ~= nil then
-        box.space.queue:delete(task[1])
-        return task
+function Get(JsonString)
+    local space_name = json.decode(JsonString).space_name
+    local tuple = CreateTuple(JsonString)
+
+    return box.space[space_name]:select(tuple[1])
+end
+
+function Update(JsonString)
+    local space_name = json.decode(JsonString).space_name
+    local tuple = CreateTuple(JsonString)
+    local i = 1
+    for key, value in pairs(tuple) do
+        if key ~= 1 then
+            box.space[space_name]:update(tuple[1], {{'=', i, value}})
+        end
+        i = i +1
     end
-
-    return nil
+    return Get(JsonString)
 end
 
-function CheckTuple(string)
-    return string
+function Insert(JsonString)
+    local space_name = json.decode(JsonString).space_name
+    return box.space[space_name]:insert(CreateTuple(JsonString))
 end
 
-function CheckQueue(tuple)
-    local newtuple = box.tuple.new{tuple[1], tuple[2], tuple[3], tuple[4], "test"}
-    return newtuple
+function Delete(JsonString)
+    local space_name = json.decode(JsonString).space_name
+    local tuple = CreateTuple(JsonString)
+
+    return box.space[space_name]:delete(tuple[1])
 end
 
-function AddQueue(tuple)
-    box.space.tester:insert{tuple[1], tuple[2], tuple[3], tuple[4], "test"}
-    return box.tuple.new{tuple[1], tuple[2], tuple[3], tuple[4], "test"}
+
+-- implametation
+
+function CreateTuple(JsonString)
+    local ttable = ConvertJsonToTable(JsonString)
+    return box.tuple.new(ttable)
+end
+
+function ConvertJsonToTable(JsonString)
+    local numTable = json.decode(JsonString).numeric
+    local model = json.decode(JsonString).model
+    local ntable = {} local ktable = {} local rtable = {} local vtable = {}
+
+    for key, value in pairs(numTable) do vtable = model[value] ntable[key] = vtable end
+    for k in pairs(ntable) do table.insert(ktable, k) end
+    table.sort(ktable)
+    for _, k in ipairs(ktable) do table.insert(rtable, ntable[k]) end
+    return rtable
+end
+
+-- vshard
+
+function CallReplica(bucket_id, function_name, argument_list)
+    return vshard.router.callre(bucket_id, function_name, argument_list, {timeout = 10})
+end
+
+function CallMaster(bucket_id, function_name, argument_list)
+    return vshard.router.callrw(bucket_id, function_name, argument_list, {timeout = 10})
 end

@@ -36,7 +36,7 @@ function spaces.initUsersDB()	--in-memory
     users_space:create_index('bucket_id', {
         if_not_exists = true,
         type = 'TREE',
-        unique = true,
+        unique = false,
         parts = {5, 'unsigned'}
     })
 end
@@ -112,7 +112,7 @@ function spaces.initOrdersDB()	--in-memory
     orders_space:create_index('bucket_id', {
         if_not_exists = true,
         type = 'TREE',
-        unique = true,
+        unique = false,
         parts = {10, 'unsigned'}
     })
 end
@@ -154,7 +154,7 @@ function spaces.initHistoryDB()	--disk
 	history_space:create_index('bucket_id', {
         if_not_exists = true,
         type = 'TREE',
-        unique = true,
+        unique = false,
         parts = {5, 'unsigned'}
     })
 end
@@ -190,6 +190,13 @@ function spaces.initServicesDB()	--in-memory
         type = 'TREE',
         unique = true,
         parts = {4, 'string'}
+    })
+
+    service_space:create_index('bucket_id', {
+        if_not_exists = true,
+        type = 'TREE',
+        unique = false,
+        parts = {5, 'unsigned'}
     })
 end
 
@@ -238,6 +245,13 @@ function spaces.initAccountsDB() --in-memory
         type = 'TREE',
         unique = false,
         parts = {6, 'INT'}
+    })
+
+    account_space:create_index('bucket_id', {
+        if_not_exists = true,
+        type = 'TREE',
+        unique = false,
+        parts = {7, 'unsigned'}
     })
 end
 
@@ -301,6 +315,13 @@ function spaces.initProxyDB()	--in-memory
         unique = false,
         parts = {8, 'string'}
     })
+
+    proxy_space:create_index('bucket_id', {
+        if_not_exists = true,
+        type = 'TREE',
+        unique = false,
+        parts = {9, 'unsigned'}
+    })
 end
 
 function spaces.InitQueue()	--imemory
@@ -336,11 +357,25 @@ function spaces.InitQueue()	--imemory
         parts = {4, 'INT'}
     })
 
+    queue_space:create_index('secondary_starttime', {
+        if_not_exists = true,
+        type = 'TREE',
+        unique = false,
+        parts = {5, 'string'}
+    })
+
+    queue_space:create_index('secondary_laststart', {
+        if_not_exists = true,
+        type = 'TREE',
+        unique = false,
+        parts = {6, 'string'}
+    })
+
 	queue_space:create_index('bucket_id', {
         if_not_exists = true,
         type = 'TREE',
-        unique = true,
-        parts = {5, 'unsigned'}
+        unique = false,
+        parts = {7, 'unsigned'}
     })
 
 end
