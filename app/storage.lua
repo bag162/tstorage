@@ -89,6 +89,15 @@ function ConvertJsonToTable(JsonString)
     return rtable
 end
 
+-- test
+function TestObjectLua(objectLua)
+    return objectLua["Bucket"]
+end
+
+function TestObjectLua1(objectLua)
+    return objectLua.Bucket
+end
+
 -- vshard
 
 function CallReplica(JsonString)
