@@ -91,11 +91,11 @@ end
 
 -- test
 function TestObjectLua(objectLua)
-    return objectLua["Bucket"]
+    return objectLua["space_name"]
 end
 
 function TestObjectLua1(objectLua)
-    return objectLua.Bucket
+    return objectLua.space_name
 end
 
 -- vshard
