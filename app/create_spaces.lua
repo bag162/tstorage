@@ -34,9 +34,6 @@ function spaces.initUsersDB()	--in-memory
     })
 
     users_space:create_index('bucket_id', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = false,
         parts = {5, 'unsigned'}
     })
 end
@@ -110,9 +107,6 @@ function spaces.initOrdersDB()	--in-memory
     })
 
     orders_space:create_index('bucket_id', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = false,
         parts = {10, 'unsigned'}
     })
 end
@@ -152,9 +146,6 @@ function spaces.initHistoryDB()	--disk
     })
 	
 	history_space:create_index('bucket_id', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = false,
         parts = {5, 'unsigned'}
     })
 end
@@ -193,9 +184,6 @@ function spaces.initServicesDB()	--in-memory
     })
 
     service_space:create_index('bucket_id', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = false,
         parts = {5, 'unsigned'}
     })
 end
@@ -248,9 +236,6 @@ function spaces.initAccountsDB() --in-memory
     })
 
     account_space:create_index('bucket_id', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = false,
         parts = {7, 'unsigned'}
     })
 end
@@ -317,9 +302,6 @@ function spaces.initProxyDB()	--in-memory
     })
 
     proxy_space:create_index('bucket_id', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = false,
         parts = {9, 'unsigned'}
     })
 end
@@ -372,9 +354,6 @@ function spaces.InitQueue()	--imemory
     })
 
 	queue_space:create_index('bucket_id', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = false,
         parts = {7, 'unsigned'}
     })
 
