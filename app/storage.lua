@@ -98,6 +98,14 @@ function TestObjectLua1(objectLua)
     return objectLua.space_name
 end
 
+function TestRequest1(JsonString)
+    return "1"
+end
+
+function TestRequest2(JsonString)
+    return JsonString
+end
+
 -- vshard
 
 function CallReplica(JsonString)
