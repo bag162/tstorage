@@ -117,5 +117,5 @@ function CallMaster(JsonString)
 end
 
 function CallMasterJson(JsonString)
-    json.encode(vshard.router.callrw(json.decode(JsonString).bucket_id, json.decode(JsonString).function_name, json.decode(JsonString).JsonData, {timeout = 10}))
+    return json.encode(vshard.router.callrw(json.decode(JsonString).bucket_id, json.decode(JsonString).function_name, json.decode(JsonString).JsonData, {timeout = 10}))
 end
