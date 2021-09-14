@@ -98,6 +98,8 @@ function TestObjectLua1(objectLua)
     return objectLua.space_name
 end
 
+
+
 function TestRequest1(JsonString)
     return "1"
 end
@@ -105,6 +107,23 @@ end
 function TestRequest2(JsonString)
     return JsonString
 end
+
+
+
+function GetFuncname(JsonString)
+    return json.decode(JsonString).function_name
+end
+
+function GetJsonData(JsonString)
+    return json.decode(JsonString).JsonData
+end
+
+function GetBucketId(JsonString)
+    return json.decode(JsonString).bucket_id
+end
+
+
+
 
 -- vshard
 
