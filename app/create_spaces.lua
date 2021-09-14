@@ -155,37 +155,19 @@ function spaces.initServicesDB()	--in-memory
         if_not_exists = true
     })
 	
-	service_space:create_index('primary_index', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = true,
-        parts = {1, 'NUMBER'}
-    })
-	
-	service_space:create_index('secondary_price', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = false,
-        parts = {2, 'NUMBER'}
+    service_space:format({
+        {'primary_index', 'NUMBER'},
+        {'secondary_price', 'NUMBER'},
+        {'secondary_parseregularexp', 'NUMBER'},
+        {'secondary_serviceprefix', 'string'},
+        {'bucket_id', 'string'},
     })
 
-    service_space:create_index('secondary_parseregularexp', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = false,
-        parts = {3, 'string'}
-    })
-
-    service_space:create_index('secondary_serviceprefix', {
-        if_not_exists = true,
-        type = 'TREE',
-        unique = true,
-        parts = {4, 'string'}
-    })
-
-    service_space:create_index('bucket_id', {
-        parts = {5, 'unsigned'}
-    })
+    service_space:create_index('primary_index', {parts = {'primary_index'}, unique = true})
+	service_space:create_index('secondary_price', {parts = {'secondary_price'}, unique = false})
+    service_space:create_index('secondary_parseregularexp', {parts = {'secondary_parseregularexp'}, unique = false})
+    service_space:create_index('secondary_serviceprefix', {parts = {'secondary_serviceprefix'}, unique = true})
+    service_space:create_index('bucket_id', {parts = {'bucket_id'}, unique = false})
 end
 
 function spaces.initAccountsDB() --in-memory
