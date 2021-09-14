@@ -138,3 +138,8 @@ end
 function CallMasterJson(JsonString)
     return json.encode(vshard.router.callrw(json.decode(JsonString).bucket_id, json.decode(JsonString).function_name, json.decode(JsonString).JsonData, {timeout = 10}))
 end
+
+function TestCallJson(JsonString)
+    local response = vshard.router.call(5000, 'write', "TestRequest1", JsonString, {timeout = 10})
+    return json.encode(response)
+end
