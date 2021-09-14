@@ -158,9 +158,9 @@ function spaces.initServicesDB()	--in-memory
     service_space:format({
         {'primary_index', 'NUMBER'},
         {'secondary_price', 'NUMBER'},
-        {'secondary_parseregularexp', 'NUMBER'},
+        {'secondary_parseregularexp', 'string'},
         {'secondary_serviceprefix', 'string'},
-        {'bucket_id', 'string'},
+        {'bucket_id', 'unsigned'},
     })
 
     service_space:create_index('primary_index', {parts = {'primary_index'}, unique = true})
