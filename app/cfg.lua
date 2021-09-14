@@ -11,7 +11,7 @@ cfg.cfg = {
     collect_bucket_garbage_interval = 5,
     replication_connect_quorum = 0,
     rebalancer_disbalance_threshold = 3,
-
+    shard_index = "bucket_id",
     sharding = {
         
         ['cbf06940-0790-498b-948d-042b62cf3d29'] = {
