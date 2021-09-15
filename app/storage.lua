@@ -10,9 +10,8 @@ local json = require('json')
 names = {
     ['storage_1_master'] = '8a274925-a26d-47fc-9e1b-af88ce939412',
     ['storage_2_master'] = '1e02ae8a-afc0-4e91-ba34-843a356b8ed7',
-    ['storage_1_replica'] = '3de2e3e1-9ebe-4d0d-abb1-26d301b84633',
-    ['storage_2_replica'] = '001688c3-66f8-4a31-8e19-036c17d489c2',
-}
+    ['storage_1and2_replica'] = '3de2e3e1-9ebe-4d0d-abb1-26d301b84633'}
+    
 replicasets = {'cbf06940-0790-498b-948d-042b62cf3d29',
                'ac522f65-aa94-4134-9f64-51ee384f1a54'}
 

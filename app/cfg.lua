@@ -25,7 +25,7 @@ cfg.cfg = {
 
                 ['3de2e3e1-9ebe-4d0d-abb1-26d301b84633'] = {
                     uri = 'worker:FuEog86YW3Nnkjhg2WLC@185.251.89.101:3310',
-                    name = 'storage_1_replica'
+                    name = 'storage_1and2_replica'
                 }
             },
         },
@@ -40,9 +40,9 @@ cfg.cfg = {
                     master = true
                 },
 
-                ['001688c3-66f8-4a31-8e19-036c17d489c2'] = {
-                    uri = 'worker:FuEog86YW3Nnkjhg2WLC@185.251.89.101:3311',
-                    name = 'storage_2_replica'
+                ['3de2e3e1-9ebe-4d0d-abb1-26d301b84633'] = {
+                    uri = 'worker:FuEog86YW3Nnkjhg2WLC@185.251.89.101:3310',
+                    name = 'storage_1and2_replica'
                 }
             },
         },
