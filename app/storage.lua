@@ -11,6 +11,7 @@ vshard.storage.cfg(cfg.cfg, arg[1])
 cfg.listen = 3300
 vshard.router.cfg(cfg.cfg)
 
+
 box.once('createUsers', users.createUsers)
 box.once('initUsersDB', spaces.initUsersDB)
 box.once('initOrdersDB', spaces.initOrdersDB)
@@ -21,17 +22,32 @@ box.once('initProxyDB', spaces.initProxyDB)
 box.once('initQueue', spaces.InitQueue)
 
 -- CRUD
+
 function GetAll(JsonString)
+    if JsonString == nil then
+        return nil
+    end
+    
     local space_name = json.decode(JsonString).space_name
     return box.space[space_name]:select()
 end
+ 
 function Get(JsonString)
+    if JsonString == nil then
+        return nil
+    end
+
     local space_name = json.decode(JsonString).space_name
     local tuple = CreateTuple(JsonString)
 
     return box.space[space_name]:select(tuple[1])
 end
+
 function Update(JsonString)
+    if JsonString == nil then
+        return nil
+    end
+
     local space_name = json.decode(JsonString).space_name
     local tuple = CreateTuple(JsonString)
     local i = 1
@@ -43,14 +59,23 @@ function Update(JsonString)
     end
     return Get(JsonString)
 end
+
 function Insert(JsonString)
+    if JsonString == nil then
+        return nil
+    end
+
     local space_name = json.decode(JsonString).space_name
     return box.space[space_name]:insert(CreateTuple(JsonString))
 end
+
 function Delete(JsonString)
+    if JsonString == nil then
+        return nil
+    end
+
     local space_name = json.decode(JsonString).space_name
     local tuple = CreateTuple(JsonString)
-
     return box.space[space_name]:delete(tuple[1])
 end
 
@@ -63,7 +88,6 @@ CrudFuncs = {
 }
 
 -- implametation
-
 function CreateTuple(JsonString)
     local ttable = ConvertJsonToTable(JsonString)
     return box.tuple.new(ttable)
