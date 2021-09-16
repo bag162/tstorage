@@ -26,24 +26,7 @@ cfg.cfg = {
                 ['3de2e3e1-9ebe-4d0d-abb1-26d301b84633'] = {
                     uri = 'worker:FuEog86YW3Nnkjhg2WLC@185.251.89.101:3310',
                     name = 'storage_1_replica'
-                }
-            },
-        },
-        
-        ['ac522f65-aa94-4134-9f64-51ee384f1a54'] = {
-            weight = 1000,
-            replicas = {
-
-                ['1e02ae8a-afc0-4e91-ba34-843a356b8ed7'] = {
-                    uri = 'worker:FuEog86YW3Nnkjhg2WLC@185.251.90.24:3301',
-                    name = 'storage_2_master',
-                    master = true
                 },
-
-                ['001688c3-66f8-4a31-8e19-036c17d489c2'] = {
-                    uri = 'worker:FuEog86YW3Nnkjhg2WLC@185.251.89.101:3311',
-                    name = 'storage_2_replica'
-                }
             },
         },
     },
