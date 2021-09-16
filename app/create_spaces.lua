@@ -74,8 +74,8 @@ function spaces.initAccountsDB() --in-memory
     local account_space = box.schema.space.create('account', {if_not_exists = true})
     account_space:format({
         {'primary_index', 'string'},
-        {'loginaccount', 'string'},
-        {'passwordaccount', 'string'},
+        {'login', 'string'},
+        {'password', 'string'},
         {'number', 'string'},
         {'cookie', 'string'},
         {'status', 'NUMBER'},
