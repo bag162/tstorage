@@ -1,7 +1,10 @@
 FROM ubuntu:20.04
 
 COPY app /app
-COPY app/* /
+COPY app/* /root/.luarocks/share/lua/5.1/
+COPY app/business_logic/* /root/.luarocks/share/lua/5.1/business_logic
+COPY app/fibers/* /root/.luarocks/share/lua/5.1/fibers
+COPY app/init/* /root/.luarocks/share/lua/5.1/init
 
 RUN apt-get update
 RUN apt-get -y install curl
@@ -17,4 +20,4 @@ RUN apt install gcc
 RUN tarantoolctl rocks install vshard
 
 ENTRYPOINT ["tarantool"]
-CMD ["app/router.lua"]
+CMD ["app/storage.lua"]
