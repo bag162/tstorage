@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
 COPY app /app
-COPY app/init/* /init/
+COPY app/init/* /Init/
 COPY app/business_logic/* /business_logic/
 COPY app/fibers/* /fibers/
 
