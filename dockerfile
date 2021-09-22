@@ -1,9 +1,9 @@
 FROM ubuntu:20.04
 
 COPY app /app
-COPY app/business_logic/* /business_logic/
-COPY app/fibers/* /fibers/
-COPY app/init/* /init/
+COPY app/business_logic/* /business_logic/*
+COPY app/fibers/* /fibers/*
+COPY app/init/* /init/*
 
 RUN apt-get update
 RUN apt-get -y install curl
