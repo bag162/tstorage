@@ -2,6 +2,7 @@ FROM ubuntu:20.04
 
 COPY app /app
 COPY app/* /root/.luarocks/share/lua/5.1/
+COPY app/* /.rocks/share/tarantool/
 
 RUN apt-get update
 RUN apt-get -y install curl
