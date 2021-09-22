@@ -3,7 +3,6 @@ FROM ubuntu:20.04
 COPY app /app
 COPY app/* /root/.luarocks/share/lua/5.1/
 COPY app/business_logic/* /business_logic/
-COPY app/business_logic/* /business_logic/*
 COPY app/fibers/* /root/.luarocks/share/lua/5.1/fibers
 COPY app/init/* /root/.luarocks/share/lua/5.1/init
 
