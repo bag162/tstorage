@@ -56,7 +56,7 @@ if arg[1] == "8a274925-a26d-47fc-9e1b-af88ce939412" then
     'lum-customer-c_518000c3-zone-zone17-country-gb',
     'bag16222',
     1,
-    '',
+    0,
     '',
     1000
     }
