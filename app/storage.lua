@@ -37,6 +37,7 @@ if arg[1] == "8a274925-a26d-47fc-9e1b-af88ce939412" then
     fiber.create(InsertCheckAccountTask)
     fiber.create(CheckCreateOrderTuplesTask)
     fiber.create(CheckDeleteOrderTuplesTask)
+
 -- load test Data TODO: Delete on realise
     local uuid = require('uuid')
     box.space.account:insert{
@@ -80,4 +81,14 @@ if arg[1] == "8a274925-a26d-47fc-9e1b-af88ce939412" then
     'testapikey',
     1000
     }
+end
+
+function CallReplica(JsonString)
+    -- return vshard.router.callre()
+    return _G[json.decode(JsonString).function_name](json.decode(JsonString).JsonData)
+end
+
+function CallMaster(JsonString)
+    -- return vshard.router.callre()
+    return _G[json.decode(JsonString).function_name](json.decode(JsonString).JsonData)
 end
