@@ -24,8 +24,8 @@ function InitOrdersDB()	--in-memory
         {'service', 'NUMBER'},
         {'sms', 'string'},
         {'sms_code', 'string'},
-        {'start_time', 'string'},
-        {'last_check_time', 'string'},
+        {'start_time', 'NUMBER'},
+        {'last_check_time', 'NUMBER'},
         {'json_data', 'string'},
         {'bucket_id', 'NUMBER'},})
     orders_space:create_index('primary_index', {parts = {'primary_index'}, unique = true})
@@ -49,7 +49,7 @@ function InitHistoryDB()	--vinyl
         {'primary_index', 'string'},
         {'type_request', 'NUMBER'},
         {'user_id', 'string'},
-        {'date_time', 'string'},
+        {'date_time', 'NUMBER'},
         {'message', 'string'},
         {'bucket_id', 'NUMBER'},})
     history_space:create_index('primary_index', {parts = {'primary_index'}, unique = true})
@@ -103,7 +103,7 @@ function InitProxyDB()	--in-memory
         {'login', 'string'},
         {'password', 'string'},
         {'status', 'NUMBER'},
-        {'last_date_time_active', 'string'},
+        {'last_date_time_active', 'NUMBER'},
         {'external_ip', 'string'},
         {'bucket_id', 'NUMBER'}})
     proxy_space:create_index('primary_index', {parts = {'primary_index'}, unique = true})
