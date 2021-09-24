@@ -37,7 +37,7 @@ end
 function CheckDeleteOrderTuplesTask()
     local queue = box.space.queue
     while true do
-        if queue.index.type:count(4) then
+        if queue.index.type:count(4) == 0 then
             local insertedTuple = box.tuple.new(uuid.str(), 4, 'not', 6, 1000)
             queue:insert(insertedTuple)
         end
