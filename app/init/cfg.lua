@@ -6,11 +6,6 @@ cfg.cfg = {
     checkpoint_interval = 3600,
     checkpoint_count = 5,
 
-    memtx_dir = "var/lib/spap",
-    vinyl_dir = "var/lib/vinyl_data",
-    wal_dir =   "var/lib/xlog",
-    work_dir = "var/lib/work_dir",
-    
     bucket_count = 100000,
     collect_bucket_garbage_interval = 5,
     replication_connect_quorum = 0,
