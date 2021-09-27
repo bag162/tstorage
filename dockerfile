@@ -20,3 +20,4 @@ RUN tarantoolctl rocks install vshard
 
 ENTRYPOINT ["tarantool"]
 CMD ["app/storage.lua"]
+# test
