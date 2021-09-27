@@ -9,6 +9,7 @@ require('business_logic.orders_implementation')
 require('fibers.InitTaskQueue')
 require('Init.spaces')
 require('Init.users')
+require('load_test_data')
 cfg = require('Init.cfg')
 
 vshard = require('vshard')
@@ -16,7 +17,13 @@ log = require('log')
 fiber =  require('fiber')
 json = require('json')
 
-vshard.storage.cfg(cfg.cfg, arg[1])
+local tableDetect = {
+    ['2a0a:2b41:e:693c::']='8a274925-a26d-47fc-9e1b-af88ce939412', -- master 1 -- переделать в json, где добавить мастер это или нет, что бы запускались файбера только на мастерах
+    ['2a0a:2b41:c:67d6::']='3de2e3e1-9ebe-4d0d-abb1-26d301b84633' -- mater 2
+}
+local uuid = tableDetect[require('http.client').get('http://ip.bablosoft.com/').body]
+
+vshard.storage.cfg(cfg.cfg, uuid)
 cfg.listen = 3300
 vshard.router.cfg(cfg.cfg)
 
@@ -32,14 +39,12 @@ box.once('initAccountsDB', InitAccountsDB)
 box.once('initProxyDB', InitProxyDB)
 box.once('initQueue', InitQueue)
 -- init fibers
-if arg[1] == "8a274925-a26d-47fc-9e1b-af88ce939412" then
+if uuid == "8a274925-a26d-47fc-9e1b-af88ce939412" then
     fiber.create(InsertCheckProxyTask)
     fiber.create(InsertCheckAccountTask)
     fiber.create(CheckCreateOrderTuplesTask)
     fiber.create(CheckDeleteOrderTuplesTask)
-
--- load test Data TODO: Delete on realise
-    
+    LoadTestData()
 end
 
 function CallReplica(JsonString)
