@@ -8,7 +8,7 @@ require('business_logic.orders_implementation')
 require('fibers.InitTaskQueue')
 require('Init.spaces')
 require('Init.users')
-require('init.load_test_data')
+require('init.testdata')
 
 cfg = require('Init.cfg')
 vshard = require('vshard')
