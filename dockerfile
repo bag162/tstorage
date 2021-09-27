@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-VOLUME /var/lib/tstorage
+VOLUME /app/data:/tstorage
 COPY app /app
 COPY app/init/* /Init/
 COPY app/business_logic/* /business_logic/
