@@ -1,5 +1,4 @@
 #!/usr/bin/env tarantool
-require('strict').on()
 
 require('strict').on()
 require('business_logic.crud')
@@ -9,9 +8,9 @@ require('business_logic.orders_implementation')
 require('fibers.InitTaskQueue')
 require('Init.spaces')
 require('Init.users')
-require('load_test_data')
-cfg = require('Init.cfg')
+require('init.load_test_data')
 
+cfg = require('Init.cfg')
 vshard = require('vshard')
 log = require('log')
 fiber =  require('fiber')
