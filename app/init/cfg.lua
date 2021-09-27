@@ -2,7 +2,7 @@ local cfg = {}
 
 cfg.cfg = {
     log_level = 5,
-    
+    work_dir = '/tstorage',
     checkpoint_interval = 3600,
     checkpoint_count = 5,
 
