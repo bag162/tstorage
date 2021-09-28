@@ -56,3 +56,4 @@ function CallMaster(JsonString)
     return _G[json.decode(JsonString).function_name](json.decode(JsonString).JsonData)
 end
 -- test
+-- test 2
