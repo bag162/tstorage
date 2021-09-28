@@ -55,5 +55,3 @@ function CallMaster(JsonString)
     -- return vshard.router.callre()
     return _G[json.decode(JsonString).function_name](json.decode(JsonString).JsonData)
 end
--- test
--- test 2
