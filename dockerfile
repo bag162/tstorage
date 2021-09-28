@@ -1,5 +1,4 @@
 FROM ubuntu:20.04
-VOLUME /app/data:/tstorage
 COPY app /app
 COPY app/init/* /Init/
 COPY app/business_logic/* /business_logic/
@@ -20,3 +19,4 @@ RUN tarantoolctl rocks install vshard
 
 ENTRYPOINT ["tarantool"]
 CMD ["app/storage.lua"]
+# test
