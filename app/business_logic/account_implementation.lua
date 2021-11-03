@@ -1,6 +1,6 @@
 local json = require('json')
 
-function GetAccountDataByFilter(JsonString)
+function GetAccountsByFilter(JsonString)
     local filterLogin = json.decode(JsonString).login
     local filterStatus = json.decode(JsonString).status
     local filterNumber = json.decode(JsonString).number
