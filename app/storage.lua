@@ -18,8 +18,7 @@ fiber =  require('fiber')
 json = require('json')
 
 local tableDetect = {
-    ['2a0a:2b41:e:693c::']='8a274925-a26d-47fc-9e1b-af88ce939412', -- master 1 -- переделать в json, где добавить мастер это или нет, что бы запускались файбера только на мастерах
-    ['2a0a:2b41:c:67d6::']='3de2e3e1-9ebe-4d0d-abb1-26d301b84633' -- mater 2
+    ['2a0a:2b41:2:5804::']='8a274925-a26d-47fc-9e1b-af88ce939412'
 }
 local uuid = tableDetect[require('http.client').get('http://ip.bablosoft.com/').body]
 

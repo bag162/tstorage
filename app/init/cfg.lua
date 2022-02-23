@@ -21,11 +21,6 @@ cfg.cfg = {
                     name = 'storage_1_master',
                     master = true
                 },
-
-                ['3de2e3e1-9ebe-4d0d-abb1-26d301b84633'] = {
-                    uri = 'worker:FuEog86YW3Nnkjhg2WLC@176.119.147.238:3310',
-                    name = 'storage_1_replica'
-                },
             },
         },
     },
