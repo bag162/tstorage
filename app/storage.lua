@@ -23,7 +23,7 @@ local tableDetect = {
 local uuid = tableDetect[require('http.client').get('http://ip.bablosoft.com/').body]
 
 vshard.storage.cfg(cfg.cfg, uuid)
-cfg.listen = 3300
+cfg.listen = 3301
 vshard.router.cfg(cfg.cfg)
 
 

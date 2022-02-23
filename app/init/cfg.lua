@@ -15,9 +15,8 @@ cfg.cfg = {
         ['cbf06940-0790-498b-948d-042b62cf3d29'] = {
             weight = 1000,
             replicas = {
-
                 ['8a274925-a26d-47fc-9e1b-af88ce939412'] = {
-                    uri = 'worker:FuEog86YW3Nnkjhg2WLC@185.251.90.90:3301',
+                    uri = 'worker:FuEog86YW3Nnkjhg2WLC@185.185.70.131:3301',
                     name = 'storage_1_master',
                     master = true
                 },
