@@ -19,7 +19,8 @@ function LoadTestData()
         1,
         0,
         '',
-        1000
+        1000,
+        'test'
         }
         box.space.service:insert{
         1,
