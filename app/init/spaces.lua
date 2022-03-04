@@ -241,6 +241,11 @@ function InitProxyDB() -- in-memory
         parts = {'bucket_id'},
         unique = false
     })
+    proxy_space:create_index('group', {
+        parts = {'group'},
+        unique = false
+    })
+
 end
 
 function InitQueue() -- imemory
