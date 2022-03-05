@@ -204,7 +204,8 @@ function InitProxyDB() -- in-memory
     })
     proxy_space:format({{'primary_index', 'string'}, {'ip', 'string'}, {'port', 'string'}, {'login', 'string'},
                         {'password', 'string'}, {'status', 'NUMBER'}, {'last_date_time_active', 'NUMBER'},
-                        {'external_ip', 'string'}, {'bucket_id', 'NUMBER'}})
+                        {'external_ip', 'string'}, {'bucket_id', 'NUMBER'}, {'group', 'string'}})
+                        
     proxy_space:create_index('primary_index', {
         parts = {'primary_index'},
         unique = true
